@@ -1,10 +1,19 @@
-let age = prompt("Введите Ваш возраст");
-if (age >= 18) {
-    alert("Приветствуем Вас на LifeSpot " + new Date().toLocaleString());
+let session = new Map();
+session.set("userAgent", window.navigator.userAgent)
+session.set("age", prompt("Пожалуйста, введите ваш возраст?"))
+if (session.get("age") >= 18) {
+    let startDate = new Date().toLocaleString();
+
+    alert("Приветствуем на LifeSpot! " + '\n' + "Текущее время: " + startDate);
+    session.set("startDate", startDate)
 }
 else {
     alert("Наши трансляции не предназначены для лиц моложе 18 лет. Вы будете перенаправлены");
-    window.location.href = "http://www.google.com";
+    window.location.href = "http://www.google.com"
+}
+
+for (let result of session) {
+    console.log(result)
 }
 
 function filterContent() {
