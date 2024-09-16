@@ -1,7 +1,7 @@
-function filterContent(userInput) {
+function filterContent(inputFunction) {
     let elements = document.getElementsByClassName('video-container'); for (let i = 0; i < elements.length; i++) {
         let videoText = elements[i].querySelector(".video-title").innerText;
-        if (!videoText.toLowerCase().includes(userInput.toLowerCase())) {
+        if (!videoText.toLowerCase().includes(inputFunction().toLowerCase())) {
             elements[i].style.display = 'none';
         } else {
             elements[i].style.display = 'inline-block';
@@ -9,7 +9,7 @@ function filterContent(userInput) {
     }
 }
 
-const handleSession= function() {
+function handleSession() {
     let session = new Map();
     session.set("userAgent", window.navigator.userAgent)
     session.set("age", prompt("Пожалуйста, введите ваш возраст?"))
@@ -23,7 +23,11 @@ const handleSession= function() {
         alert("Наши трансляции не предназначены для лиц моложе 18 лет. Вы будете перенаправлены");
         window.location.href = "http://www.google.com"
     }
+    return session;
+}
+
+const sessionLog = function(session) {
     for (let result of session) {
-        console.log(result)
+        console.log(result);
     }
 }
