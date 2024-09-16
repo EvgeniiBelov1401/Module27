@@ -1,4 +1,4 @@
-function filterContent() {
+const filterContent= function() {
     let inputString = document.getElementsByTagName('input')[0].value.toLowerCase();
     let elements = document.getElementsByClassName('video-container'); for (let i = 0; i < elements.length; i++) {
         let videoText = elements[i].querySelector(".video-title").innerText;
@@ -10,7 +10,7 @@ function filterContent() {
     }
 }
 
-function handleSession() {
+const handleSession= function() {
     let session = new Map();
     session.set("userAgent", window.navigator.userAgent)
     session.set("age", prompt("Пожалуйста, введите ваш возраст?"))
