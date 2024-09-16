@@ -23,7 +23,7 @@
             <script>
                 handleSession();
             </script>
-            <input type="text" oninput="filterContent()" placeholder="Поиск видео" />
+            <input type="text" oninput="filterContent(document.getElementsByTagName('input')[0].value.toLowerCase())" placeholder="Поиск видео" />
         </div>
         <div class="video-container">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/srlpC5tmhYs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

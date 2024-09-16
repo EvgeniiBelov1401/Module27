@@ -1,8 +1,7 @@
-const filterContent= function() {
-    let inputString = document.getElementsByTagName('input')[0].value.toLowerCase();
+function filterContent(userInput) {
     let elements = document.getElementsByClassName('video-container'); for (let i = 0; i < elements.length; i++) {
         let videoText = elements[i].querySelector(".video-title").innerText;
-        if (!videoText.toLowerCase().includes(inputString.toLowerCase())) {
+        if (!videoText.toLowerCase().includes(userInput.toLowerCase())) {
             elements[i].style.display = 'none';
         } else {
             elements[i].style.display = 'inline-block';
