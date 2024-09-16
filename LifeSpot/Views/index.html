@@ -10,12 +10,7 @@
     <header id="header-index">
         <h1>LifeSpot — прямые трансляции с улиц</h1>
         <p>Покажем, что происходит прямо сейчас</p>
-        <input type="text" oninput="
-    const inputFunction = function () {
-        return document.getElementsByTagName('input')[0].value.toLowerCase();
-    }
-    filterContent(inputFunction)" 
-               placeholder="Поиск видео""/>
+        <input type="text" oninput="filterContent()" placeholder="Поиск видео"/>
     </header>
 
     <aside id="sidebar">
@@ -27,8 +22,9 @@
     <main>
         <div style="padding:5% 1% 5%">
             <script>
-                let session = handleSession();
-                sessionLog(session);
+                сheckAge();
+                handleSession();
+                sessionLog();
             </script>
         </div>
         <div class="video-container">
