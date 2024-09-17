@@ -2,18 +2,20 @@
     background-color: #111;
     padding-left: 15%;
     color: white;
-
 }
+
 header {
     padding-top: 1.2%;
 }
-header h1{
-    font-size:100px;
 
+    header h1 {
+        font-size: 100px;
+    }
+
+main p {
+    font-size: 30px;
 }
-main p{
-    font-size:30px;
-}
+
 footer {
     position: absolute;
     bottom: 0;
@@ -21,6 +23,7 @@ footer {
     color: dimgrey;
     line-height: 66%;
 }
+
 aside {
     height: 100%;
     width: 10%;
@@ -33,6 +36,7 @@ aside {
     padding-top: 2%;
     font-size: large;
 }
+
 .navbar {
     color: #bcc5fe;
     padding-left: 15%;
@@ -47,24 +51,28 @@ aside {
         .navbar p:hover {
             color: red;
         }
+
 button {
     width: 200px;
     height: 30px;
     font-size: 20px;
     border-color: #bcc5fe;
 }
+
     button:hover {
         background-color: #292626;
-        color:snow;
+        color: snow;
     }
+
 .review-container, .review-button {
     display: inline-block;
     margin-top: 0.5em;
     padding-top: 1%;
 }
+
 .review-text {
     display: block;
     margin-top: 0.5em;
     padding-top: 1%;
-    background-color:#292626;
+    background-color: #292626;
 }
