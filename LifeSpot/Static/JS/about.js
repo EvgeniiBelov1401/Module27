@@ -1,21 +1,35 @@
 ﻿const ShowGreeting = () => alert("Приветствуем Вас на странице 'О проекте'");
 
-function GetReview() {
-    let review = {};
-    review["userName"] = prompt("Напишите Ваше имя:");
-    if (review["userName"] == null) {
+function GetComment() {
+    let comment = {};
+    comment.author = prompt("Напишите Ваше имя:");
+    if (comment.author == null) {
         return;
     }
-    review["comment"] = prompt("Напишите Ваш отзыв:");
-    if (review["comment"] == null) {
+    comment.text = prompt("Напишите Ваш отзыв:");
+    if (comment.text == null) {
         return;
     }
-    review["date"] = new Date().toLocaleString();
-    writeReview(review);
+    comment.date = new Date().toLocaleString();
+
+    let enableLikes = confirm('Разрешить пользователям оценивать ваш отзыв?');
+    if (enableLikes) {
+        let review = Object.create(comment);
+        review.rate = 0;
+        writeReview(review);
+    }
+    else {
+        writeReview(comment);
+    }
+
 }
 const writeReview = review => {
+    let likeCounter = '';
+    if (review.hasOwnProperty('rate')) {
+        likeCounter += '           <b style="color: chocolate">Рейтинг:</b>   ' + review.rate;
+    }
     document.getElementsByClassName('reviews')[0].innerHTML += '    <div class="review-text">\n' +
-        `<p> <i> <b>${review['userName']}</b>  ${review['date']}</i></p>` +
-        `<p>${review['comment']}</p>` +
+        `<p> <i> <b>${review['author']}</b>  ${review['date']}${likeCounter}</i></p>` +
+        `<p>${review['text']}</p>` +
         '</div>';
 }
