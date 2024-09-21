@@ -79,3 +79,15 @@ input {
         background-color: #ffffdc;
         border: 10px solid green;
     }
+
+button {
+    width: 300px;
+    height: 40px;
+    font-size: 20px;
+    border-color: #bcc5fe;
+}
+
+    button:hover {
+        background-color: #292626;
+        color: snow;
+    }
