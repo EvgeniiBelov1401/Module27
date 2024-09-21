@@ -25,10 +25,20 @@ function GetComment() {
     }
     
 }
+function addLike(id) {
+    let element = document.getElementById(id);
+    let array = element.innerText.split(' ');
+    let resultNum = parseInt(array[array.length - 1], 10);
+    resultNum += 1;
+    array[array.length - 1] = `${resultNum}`;
+    element.innerText = array.join(' ');
+}
+
 const writeReview = review => {
     let likeCounter = '';
     if (review.hasOwnProperty('rate')) {
-        likeCounter += '           <b style="color: chocolate">Рейтинг:</b>   ' + review.rate;
+        let commentId = Math.random();
+        likeCounter += '<button id="' + commentId + '" class="button-rate"" onclick="addLike(this.id)">' + `❤️ ${review.rate}</button>`;
     }
     document.getElementsByClassName('reviews')[0].innerHTML += '    <div class="review-text">\n' +
         `<p> <i> <b>${review['author']}</b>  ${review['date']}${likeCounter}</i></p>` +
