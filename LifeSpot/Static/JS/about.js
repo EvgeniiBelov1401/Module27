@@ -1,17 +1,26 @@
 ﻿const ShowGreeting = () => alert("Приветствуем Вас на странице 'О проекте'");
 
-function GetComment() {
-    let comment = {};
-    comment.author = prompt("Напишите Ваше имя:");
-    if (comment.author == null) {
+function Comment() {
+    this.author = prompt("Напишите Ваше имя:");
+    if (this.author == null) {
+        this.empty = true
         return;
     }
-    comment.text = prompt("Напишите Ваш отзыв:");
-    if (comment.text == null) {
-        return;
-    }
-    comment.date = new Date().toLocaleString();
 
+    this.text = prompt("Напишите Ваш отзыв:");
+    if (this.text == null) {
+        this.empty = true;
+        return;
+    }
+    this.date = new Date().toLocaleString();
+    
+}
+function GetComment() {
+    let comment = new Comment();
+
+    if (comment.empty) {
+        return;
+    }
     let enableLikes = confirm('Разрешить пользователям оценивать ваш отзыв?');
     if (enableLikes) {
         let review = Object.create(comment);
@@ -21,7 +30,6 @@ function GetComment() {
     else {
         writeReview(comment);
     }
-
 }
 const writeReview = review => {
     let likeCounter = '';
