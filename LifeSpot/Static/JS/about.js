@@ -2,34 +2,28 @@
 
 function Comment() {
     this.author = prompt("Напишите Ваше имя:");
-    if (this.author == null) {
-        this.empty = true
-        return;
-    }
-
     this.text = prompt("Напишите Ваш отзыв:");
-    if (this.text == null) {
-        this.empty = true;
-        return;
-    }
     this.date = new Date().toLocaleString();
     
 }
 function GetComment() {
     let comment = new Comment();
 
-    if (comment.empty) {
-        return;
-    }
-    let enableLikes = confirm('Разрешить пользователям оценивать ваш отзыв?');
-    if (enableLikes) {
-        let review = Object.create(comment);
-        review.rate = 0;
-        writeReview(review);
+    if (comment.author != "" && comment.text != "") {
+        let enableLikes = confirm('Разрешить пользователям оценивать ваш отзыв?');
+        if (enableLikes) {
+            let review = Object.create(comment);
+            review.rate = 0;
+            writeReview(review);
+        }
+        else {
+            writeReview(comment);
+        }
     }
     else {
-        writeReview(comment);
+        alert('Вы не указали Ваше имя и/или текст комментария\nПОПРОБУЙТЕ СНОВА!!!');
     }
+    
 }
 const writeReview = review => {
     let likeCounter = '';
