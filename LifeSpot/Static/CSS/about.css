@@ -92,7 +92,15 @@ button {
     width: 1800px;
     height: 300px;
 }
-.active {
-    width: 500px; 
+.slide {
+    width: 500px;
     height: 300px;
+    display: none;
+}
+.active {
+    display: block;
+}
+.arrows {
+    color:greenyellow;
+    font-size: 30px
 }

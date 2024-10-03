@@ -45,3 +45,22 @@ const writeReview = review => {
         `<p>${review['text']}</p>` +
         '</div>';
 }
+function showPicturesFlow() {
+    var slides = document.querySelectorAll('.slide');
+    var currentSlide = 0;
+
+    function showSlide(n) {
+        slides[currentSlide].classList.remove('active');
+        slides[n].classList.add('active');
+        currentSlide = n;
+    }
+    document.addEventListener('keydown', function (e) {
+        if (e.keyCode === 37) {
+            if (currentSlide == 0) showSlide(currentSlide + 2);
+            else showSlide(currentSlide - 1);           
+        } else if (e.keyCode === 39) {
+            if (currentSlide == 2) showSlide(currentSlide - 2);
+            else showSlide(currentSlide + 1);
+        }
+    });
+}
