@@ -42,15 +42,16 @@ namespace LifeSpot
         //JPG
         public static void MapJpg(this IEndpointRouteBuilder builder)
         {
-            var jpgFiles = new[] { "london.jpg", "ny.jpg", "about.js" };
+            var jpgFiles = new[] { "london.jpg", "ny.jpg", "spb.jpg" };
 
             foreach (var fileName in jpgFiles)
             {
                 builder.MapGet($"/Static/Pictures/{fileName}", async context =>
                 {
                     var jpgPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "Pictures", fileName);
-                    var jpg = await File.ReadAllTextAsync(jpgPath);
-                    await context.Response.WriteAsync(jpg);
+                    context.Response.ContentType = "image/jpeg";
+                    await using var stream=File.OpenRead(jpgPath);
+                    await stream.CopyToAsync(context.Response.Body);
                 });
             }
         }
