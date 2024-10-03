@@ -8,6 +8,7 @@ namespace LifeSpot
 {
     public static class EndpointMapper
     {
+        //CSS
         public static void MapCss(this IEndpointRouteBuilder builder)
         {
             var cssFiles = new[] { "index.css","about.css" };
@@ -23,6 +24,7 @@ namespace LifeSpot
             }
         }
 
+        //JS
         public static void MapJs(this IEndpointRouteBuilder builder)
         {
             var jsFiles = new[] { "index.js", "testing.js", "about.js" };
@@ -37,11 +39,27 @@ namespace LifeSpot
                 });
             }
         }
+        //JPG
+        public static void MapJpg(this IEndpointRouteBuilder builder)
+        {
+            var jpgFiles = new[] { "london.jpg", "ny.jpg", "about.js" };
 
+            foreach (var fileName in jpgFiles)
+            {
+                builder.MapGet($"/Static/Pictures/{fileName}", async context =>
+                {
+                    var jpgPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "Pictures", fileName);
+                    var jpg = await File.ReadAllTextAsync(jpgPath);
+                    await context.Response.WriteAsync(jpg);
+                });
+            }
+        }
+        //HTML
         public static void MapHtml(this IEndpointRouteBuilder builder)
         {
             string footerHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "footer.html"));
             string sideBarHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "sidebar.html"));
+            string sliderHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "slider.html"));
 
             builder.MapGet("/", async context =>
             {
@@ -51,7 +69,8 @@ namespace LifeSpot
                 // Загружаем шаблон страницы, вставляя в него элементы
                 var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
                     .Replace("<!--SIDEBAR-->", sideBarHtml)
-                    .Replace("<!--FOOTER-->", footerHtml);
+                    .Replace("<!--FOOTER-->", footerHtml)
+                    .Replace("<!--SLIDER-->", sliderHtml);
 
                 await context.Response.WriteAsync(html.ToString());
             });
