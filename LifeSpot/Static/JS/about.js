@@ -4,7 +4,7 @@ function Comment() {
     this.author = prompt("Напишите Ваше имя:");
     this.text = prompt("Напишите Ваш отзыв:");
     this.date = new Date().toLocaleString();
-    
+
 }
 function GetComment() {
     let comment = new Comment();
@@ -23,7 +23,7 @@ function GetComment() {
     else {
         alert('Вы не указали Ваше имя и/или текст комментария\nПОПРОБУЙТЕ СНОВА!!!');
     }
-    
+
 }
 function addLike(id) {
     let element = document.getElementById(id);
@@ -57,7 +57,7 @@ function showPicturesFlow() {
     document.addEventListener('keydown', function (e) {
         if (e.keyCode === 37) {
             if (currentSlide == 0) showSlide(currentSlide + 2);
-            else showSlide(currentSlide - 1);           
+            else showSlide(currentSlide - 1);
         } else if (e.keyCode === 39) {
             if (currentSlide == 2) showSlide(currentSlide - 2);
             else showSlide(currentSlide + 1);

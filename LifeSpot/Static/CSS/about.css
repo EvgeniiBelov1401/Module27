@@ -63,24 +63,26 @@ button {
         background-color: #292626;
         color: snow;
     }
+
 .button-rate {
     width: 100px;
     height: 30px;
     font-size: 20px;
-    color:white;
+    color: white;
     background-color: #292626;
-    border:none;
+    border: none;
 }
+
     .button-rate:hover {
         background-color: #292626;
         color: greenyellow;
     }
 
-    .review-container, .review-button {
-        display: inline-block;
-        margin-top: 0.5em;
-        padding-top: 1%;
-    }
+.review-container, .review-button {
+    display: inline-block;
+    margin-top: 0.5em;
+    padding-top: 1%;
+}
 
 .review-text {
     display: block;
@@ -88,19 +90,23 @@ button {
     padding-top: 1%;
     background-color: #292626;
 }
+
 .slider {
     width: 1800px;
     height: 300px;
 }
+
 .slide {
     width: 500px;
     height: 300px;
     display: none;
 }
+
 .active {
     display: block;
 }
+
 .arrows {
-    color:greenyellow;
+    color: greenyellow;
     font-size: 30px
 }

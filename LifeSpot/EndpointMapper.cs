@@ -11,7 +11,7 @@ namespace LifeSpot
         //CSS
         public static void MapCss(this IEndpointRouteBuilder builder)
         {
-            var cssFiles = new[] { "index.css","about.css" };
+            var cssFiles = new[] { "index.css", "about.css" };
 
             foreach (var fileName in cssFiles)
             {
@@ -50,7 +50,7 @@ namespace LifeSpot
                 {
                     var jpgPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "Pictures", fileName);
                     context.Response.ContentType = "image/jpeg";
-                    await using var stream=File.OpenRead(jpgPath);
+                    await using var stream = File.OpenRead(jpgPath);
                     await stream.CopyToAsync(context.Response.Body);
                 });
             }
@@ -71,7 +71,7 @@ namespace LifeSpot
                 var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
                     .Replace("<!--SIDEBAR-->", sideBarHtml)
                     .Replace("<!--FOOTER-->", footerHtml);
-                    
+
 
                 await context.Response.WriteAsync(html.ToString());
             });
